@@ -4,8 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
       - name: Cache node modules
         id: node-cache
@@ -18,7 +17,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
-      - name: Install Dependencies
+      - name: Install dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
 
