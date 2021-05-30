@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
-        run: npm install
+        run: npm ci
 
       - name: Build webpack
         run: npm run build
