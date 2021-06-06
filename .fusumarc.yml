@@ -1,0 +1,16 @@
+meta:
+  url:
+  title: CI/CD Tutorial with Github Action, AWS S3 ans CloudFront
+  description:
+  siteName:
+slide:
+  loop: false
+  ui:
+    sidebar: true
+    vertical: false
+    pagination: # bullets | progressbar | fraction
+    effect: # fade | cube | flip
+  code:
+    # https://prismjs.com/
+    plugins: []
+    theme: default # coy | dark | funky | okaidia | solarizedlight | tomorrow | twilight

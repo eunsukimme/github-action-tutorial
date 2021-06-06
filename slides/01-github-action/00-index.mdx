@@ -1,0 +1,66 @@
+<!-- section-title: Github Action -->
+
+# Github Action
+
+---
+
+## Github Action 은?
+
+<!-- block-start: grid -->
+
+<!-- block-start: column -->
+
+```yaml
+name: Continuous Integration
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build webpack
+        run: npm run build
+```
+
+<!-- block-end -->
+<!-- block-start: column -->
+
+- YAML 파일로 Github 가 제공하는 서버 상에서 CI/CD 워크플로우를 구축하게 도와주는 기능
+- 단순 애플리케이션 빌드, 테스트 뿐만 아니라 Github의 다른 기능(브랜치, 이슈 등)과 연계도 가능
+
+<!-- block-end -->
+
+<!-- block-end -->
+
+---
+
+## Github Action 빌딩 블록
+
+<!-- block-start: grid -->
+
+<!-- block-start: column -->
+
+<img src="/public/images/slides/github-action-workflow-diagram.png" />
+
+<!-- block-end -->
+<!-- block-start: column -->
+
+- **워크플로우(Workflow)**: Github 레포지토리에 등록하는 자동화된 업무 흐름
+
+- **이벤트(Event)**: 워크플로우를 트리거하는 특정 활동(커밋, 풀 리퀘스트 생성 등)
+
+- **잡(Job)**: 워크플로우에서 수행하는 작업의 단위. 워크플로우 내 잡은 각각 독립적으로 러너를 실행하며 병렬적으로 수행(순차적 수행도 가능)
+
+- **스텝(Step)**: 잡에서 실행되는 일의 단위. 각 스텝은 하나의 액션 또는 커맨드 명령으로 구성
+
+- **액션(Action)**: 커맨드 명령 외에도 다양한 작업(SMS 푸시 및 서드파티 라이브러리 이용 등)을 수행하는 잡의 구성요소
+
+- **러너(Runner)**: 잡을 실행하는 서버. Github에 호스팅된 러너를 사용할 수도 있고 [Github Actions runner application](https://github.com/actions/runner)이 설치된 온프레미스 서버를 사용할 수도 있다
+
+<!-- block-end -->
+
+<!-- block-end -->

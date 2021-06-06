@@ -5,11 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "start:slide": "fusuma start",
+    "start:slide-prod": "fusuma start-prod",
+    "build:slide": "fusuma build",
+    "deploy:slide": "npm run build:slide && fusuma deploy",
+    "pdf": "npm run build && fusuma pdf"
   },
   "dependencies": {
     "next": "^10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "fusuma": "^2.8.4"
   }
 }
