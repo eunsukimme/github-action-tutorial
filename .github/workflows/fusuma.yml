@@ -3,7 +3,7 @@ name: "Deploy slides to github pages"
 on:
   push:
     branches:
-      - dev
+      - develop
 jobs:
   deploy:
     runs-on: ubuntu-latest
