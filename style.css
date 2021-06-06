@@ -27,6 +27,14 @@
 
 /* https://hiroppy.github.io/fusuma/docs/guides/slide-syntax#declaring-section-title */
 
+:root {
+  --color-background: white !important;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
 h2 {
   margin-bottom: 2rem;
 }
