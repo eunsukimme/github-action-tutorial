@@ -11,14 +11,14 @@ import Home from "/pages/index";
 ## 브랜치 전략
 
 - main, dev 브랜치를 사용합니다
-- **dev**: 작업이 이뤄지는 브랜치. main 브랜치로 PR을 날립니다
+- **dev**: 작업이 이뤄지는 브랜치. main 브랜치로 PR을 날립니다.
 - **main**: 배포 환경과 동일한 형상을 유지하는 브랜치. dev에서 날린 PR이 머지되면 자동으로 배포됩니다
 
 ---
 
 ## CI 워크플로우
 
-`.github/workflows` 폴더를 만들고 그 아래에 `ci.yaml` 파일을 작성합니다.
+dev 브랜치에서 `.github/workflows` 폴더를 만들고 그 아래에 `ci.yaml` 파일을 작성합니다.
 
 <br />
 
@@ -37,3 +37,11 @@ jobs:
       - name: Build webpack
         run: npm run build
 ```
+
+---
+
+## CI 워크플로우
+
+dev 브랜치 푸시 후 main 브랜치로 PR을 생성하면 CI 워크플로우가 실행되는 것을 확인할 수 있습니다.
+
+(사진)

@@ -23,6 +23,3 @@ jobs:
 
       - name: Build webpack
         run: npm run build
-
-      - name: Failure
-        run: exit 1
