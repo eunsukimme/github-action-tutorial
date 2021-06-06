@@ -9,7 +9,7 @@
     "start:slide": "fusuma start",
     "start:slide-prod": "fusuma start-prod",
     "build:slide": "fusuma build",
-    "deploy:slide": "npm run build && fusuma deploy",
+    "deploy:slide": "npm run build:slide && fusuma deploy",
     "pdf": "npm run build && fusuma pdf"
   },
   "dependencies": {
