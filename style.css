@@ -27,6 +27,10 @@
 
 /* https://hiroppy.github.io/fusuma/docs/guides/slide-syntax#declaring-section-title */
 
+* {
+  word-break: keep-all;
+}
+
 :root {
   --color-background: white !important;
 }
@@ -37,6 +41,22 @@ h1 {
 
 h2 {
   margin-bottom: 2rem;
+}
+
+.grid {
+  max-width: 100% !important;
+}
+
+li:not(:first-child) {
+  margin-top: 1rem;
+}
+
+pre code {
+  padding: 0;
+}
+
+code {
+  font-size: 1.8rem !important;
 }
 
 .section-title {

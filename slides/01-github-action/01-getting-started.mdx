@@ -1,0 +1,39 @@
+## Getting Started
+
+`create-next-app` 명령으로 만든 간단한 React 애플리케이션을 배포해봅시다.
+
+import Home from "/pages/index";
+
+<Home />
+
+---
+
+## 브랜치 전략
+
+- main, dev 브랜치를 사용합니다
+- **dev**: 작업이 이뤄지는 브랜치. main 브랜치로 PR을 날립니다
+- **main**: 배포 환경과 동일한 형상을 유지하는 브랜치. dev에서 날린 PR이 머지되면 자동으로 배포됩니다
+
+---
+
+## CI 워크플로우
+
+`.github/workflows` 폴더를 만들고 그 아래에 `ci.yaml` 파일을 작성합니다.
+
+<br />
+
+```yaml
+name: Continuous Integration
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build webpack
+        run: npm run build
+```

@@ -1,3 +1,5 @@
+<!-- section-title: Github Action, AWS S3 and CloudFront를 활용한 React 애플리케이션 CI/CD 파이프라인 구축 -->
+
 # Github Action, AWS S3 and CloudFront를 활용한
 
 # React 애플리케이션 CI/CD 파이프라인 구축
@@ -10,6 +12,17 @@
 
 ---
 
+## React 애플리케이션의 CI/CD
+
+- PR이 생성되면 자동으로 빌드, 테스트하고 성공 여부에 따라 merge 할지를 판단한다
+- 배포 브랜치에 PR이 머지되면 자동으로 빌드, 테스트 후 호스팅 환경에 배포한다
+- 캐시 서버(CDN)을 사용한다면 서버에 저장된 캐시를 무효화(invalidate) 시킨다
+- etc. (배포가 완료되면 Slack에 알림을 쏜다 등)
+
+---
+
 ## CI/CD 파이프라인 아키텍처
+
+이번 세미나에서 구축할 React 애플리케이션 CI/CD 파이프라인
 
 <img src="/public/images/slides/workflow.png" />
