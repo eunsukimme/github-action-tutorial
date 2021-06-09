@@ -64,9 +64,14 @@ code {
   font-size: 1.8rem !important;
 }
 
+figcaption,
 span.comment {
   color: grey;
   font-size: 1.6rem;
+}
+
+figcaption {
+  margin-top: 2rem;
 }
 
 .section-title {
