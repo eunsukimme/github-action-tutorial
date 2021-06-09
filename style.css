@@ -51,12 +51,22 @@ li:not(:first-child) {
   margin-top: 1rem;
 }
 
+pre {
+  margin: 2rem 0 !important;
+}
+
 pre code {
   padding: 0;
 }
 
 code {
+  line-height: 1.4 !important;
   font-size: 1.8rem !important;
+}
+
+span.comment {
+  color: grey;
+  font-size: 1.6rem;
 }
 
 .section-title {

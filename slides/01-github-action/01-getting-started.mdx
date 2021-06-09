@@ -8,11 +8,35 @@ import Home from "/pages/index";
 
 ---
 
+## Package.json
+
+여기서 만드는 애플리케이션은 CSR(Client Side Rendering)한다고 가정하고, `pakcage.json` 은 다음과 같습니다.
+
+```json
+{
+  "name": "react-ci-cd-tutorial",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^10.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
+}
+```
+
+---
+
 ## 브랜치 전략
 
-- main, dev 브랜치를 사용합니다
-- **dev**: 작업이 이뤄지는 브랜치. main 브랜치로 PR을 날립니다.
-- **main**: 배포 환경과 동일한 형상을 유지하는 브랜치. dev에서 날린 PR이 머지되면 자동으로 배포됩니다
+- main, dev 두 브랜치를 사용한다고 가정합니다
+- **dev**: 작업이 이뤄지는 브랜치. main 브랜치로 PR을 날리면 자동으로 빌드, 테스트가 실행됩니다
+- **main**: 배포 환경과 동일한 형상을 유지하는 브랜치. dev에서 날린 PR이 머지되면 자동으로 빌드, 테스트 그리고 배포가 진행됩니다
 
 ---
 
