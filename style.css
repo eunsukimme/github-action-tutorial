@@ -77,6 +77,10 @@ figcaption {
 .section-title {
 }
 
+.highlight {
+  color: red !important;
+}
+
 .sns-box {
   margin: 20px;
 
