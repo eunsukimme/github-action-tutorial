@@ -1,0 +1,100 @@
+## Getting Started
+
+`create-next-app` 명령으로 만든 간단한 React 애플리케이션을 배포해봅시다
+
+import Home from "/pages/index";
+
+<Home />
+
+---
+
+## Package.json
+
+여기서 만드는 애플리케이션은 CSR(Client Side Rendering)한다고 가정하고, `pakcage.json` 은 다음과 같습니다
+
+```json
+{
+  "name": "react-ci-cd-tutorial",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^10.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
+}
+```
+
+---
+
+## 브랜치 전략
+
+- main, dev 두 브랜치를 사용한다고 가정합니다
+- **dev**: 작업이 이뤄지는 브랜치. main 브랜치로 PR을 날리면 자동으로 빌드, 테스트가 실행됩니다
+- **main**: 배포 환경과 동일한 형상을 유지하는 브랜치. dev에서 날린 PR이 머지되면 자동으로 빌드, 테스트 그리고 배포가 진행됩니다
+
+---
+
+## CI 워크플로우
+
+dev 브랜치에서 `.github/workflows` 폴더를 만들고 그 아래에 `ci.yaml` 파일을 작성합니다
+
+<br />
+
+```yaml
+name: Continuous Integration
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build webpack
+        run: npm run build
+```
+
+---
+
+## CI 워크플로우 - 실습
+
+dev 브랜치 푸시 후 main 브랜치로 PR을 생성하면 CI 워크플로우가 실행되는 것을 확인할 수 있습니다
+
+<!-- fragments-start -->
+
+<figure>
+  <img src="/public/images/slides/ci-hands-on/ci-1.png" />
+  <figcaption>main 브랜치로 PR을 생성한 모습</figcaption>
+</figure>
+
+<figure>
+  <img src="/public/images/slides/ci-hands-on/ci-2.png" />
+  <figcaption>
+    Action 탭에서 현재 실행중인 워크플로우 목록을 확인할 수 있다
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/public/images/slides/ci-hands-on/ci-3.png" />
+  <figcaption>워크플로우를 클릭하면 포함된 잡 목록을 확인할 수 있다</figcaption>
+</figure>
+
+<figure>
+  <img src="/public/images/slides/ci-hands-on/ci-4.png" />
+  <figcaption>잡을 클릭하면 스탭 목록과 진행 상황을 확인할 수 있다</figcaption>
+</figure>
+
+<figure>
+  <img src="/public/images/slides/ci-hands-on/ci-5.png" />
+  <figcaption>CI가 성공적으로 돌고난 후 PR 머지가 가능한 모습</figcaption>
+</figure>
+
+<!-- fragments-end -->
