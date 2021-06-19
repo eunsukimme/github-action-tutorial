@@ -1,1 +1,66 @@
-# 유용한 팁
+<!-- section-title: 부록(Tips) -->
+
+# 부록(Tips)
+
+---
+
+## Github Action Caching
+
+- `package-lock.json` 파일의 변경 사항이 없으면 node_modules 를 매번 설치하지 않고 캐싱
+
+---
+
+## 웹 애플리케이션 캐시
+
+- Webpack과 같은 모듈 번들러를 활용하여 **CSS, JS, Assets에 유니크한 해시를 부여(ex. app-67ce7f3483.css)**
+- CS, JS, Assets에 대해선 `Cache-Control` 헤더를 `public, max-age=31536000` 으로 설정
+- 위 파일들을 포함하는 HTML 파일에 대해선 `Cache-Control` 헤더를 `no-cache` 로 설정
+
+<br />
+
+Reference: [Best practices for cache control settings for your website](https://medium.com/pixelpoint/best-practices-for-cache-control-settings-for-your-website-ff262b38c5a2)
+
+---
+
+## AWS CloudFront OAI(Origin Access Identity)
+
+- CloudFront의 Origin(S3)으로 직접 접근하지 못 하도록 막는 대신 CloudFront를 통해서만 접근할 수 있도록 함
+
+---
+
+## AWS Route53
+
+- S3, CloudFront에 대한 ALIAS DNS 레코드 추가
+
+---
+
+## AWS ACM
+
+- CloudFront에 커스텀 도메인 설정할 때 TLS/SSL 인증서를 사용하도록 도와주는 서비스
+
+---
+
+<!-- section-title: FAQ -->
+
+# FAQ
+
+---
+
+## AWS S3를 사용하는 이유?
+
+- 버킷이 자동으로 확장 및 축소되기 때문에 스토리지 공간을 계획하여 특정 크기를 할당할 필요가 없습니다
+- 서버리스(Serverless) 서비스이기 때문에 파일이 저장되는 서버를 관리하거나 패치할 필요가 없습니다
+- 애플리케이션(동적 애플리케이션 등)에 서버가 필요하더라도 정적 콘텐츠에 대한 요청을 처리할 필요가 없기 때문에 서버 크기를 줄일 수 있습니다
+
+---
+
+<!-- section-title: References -->
+
+## References
+
+- [Github Action 공식 문서](https://docs.github.com/en/actions)
+- [AWS S3 공식 문서](https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/userguide/Welcome.html)
+- [AWS IAM 공식 문서](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/introduction.html)
+- [AWS CloudFront 공식 문서](https://docs.aws.amazon.com/ko_kr/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+- [실전 Amazon S3와 CloudFront로 정적 파일 배포하기](https://aws.amazon.com/ko/blogs/korea/amazon-s3-amazon-cloudfront-a-match-made-in-the-cloud/)
+- [AWS CLI로 Amazon CloudFront OAI (Origin Access Identity) 설정하기](https://dev.classmethod.jp/articles/aws-cli-cloudfront-oai-kr/)

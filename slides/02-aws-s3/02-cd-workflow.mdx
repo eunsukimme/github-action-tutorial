@@ -39,7 +39,7 @@ jobs:
       - name: Copy JS, CSS, Asset files to the S3 with the AWS CLI
         run: aws s3 sync . s3://${{ secrets.AWS_BUCKET_NAME }} --cache-control "public, max-age=31536000" --exclude "*.html"
 
-      - name: Copy oHTML files t the S3 with the AWS CLI
+      - name: Copy HTML files t the S3 with the AWS CLI
         run: aws s3 sync . s3://${{ secrets.AWS_BUCKET_NAME }} --cache-control "no-cache"
 ```
 
@@ -48,3 +48,66 @@ jobs:
 ## CD 워크플로우 - 실습
 
 `main` <- `dev` PR을 merge 한 뒤 Action이 실행되는지 확인해봅시다
+
+<!-- fragments-start -->
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-1.png" />
+  <figcaption>PR을 머지한 모습</figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-2.png" />
+  <figcaption>
+    Action 탭에서 CD 워크플로우가 실행되고 있는 것을 확인할 수 있다
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-3.png" />
+  <figcaption>
+    CD 워크플로우에 포함된 잡 목록에서 build, deploy 잡을 확인할 수 있다. 현재
+    build 잡이 실행되는 동안 deploy 잡은 기다리는 상태
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-4.png" />
+  <figcaption>build 잡을 클릭해서 현재 진행중인 스텝 확인</figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-5.png" />
+  <figcaption>build 잡이 PASS 하자 deploy 잡이 실행된 상태</figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-6.png" />
+  <figcaption>
+    deploy 잡도 PASS 완료. 이제 AWS S3 URL로 웹 사이트를 확인할 수 있다
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-7.png" />
+  <figcaption>AWS S3 버킷에 빌드된 artifact 가 업로드 된 상태</figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-8.png" />
+  <figcaption>
+    Properties > Static website hosting 섹션에서 웹 서비스 URL 확인 가능
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-9.png" />
+  <figcaption>index 페이지가 잘 나오는 것 확인</figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cd-hands-on/cd-10.png" />
+  <figcaption>error 페이지가 잘 나오는 것 확인</figcaption>
+</figure>
+
+<!-- fragments-end -->

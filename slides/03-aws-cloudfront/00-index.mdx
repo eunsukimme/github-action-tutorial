@@ -1,3 +1,99 @@
-<!-- section-title: AWS S3와 CloudFront 연동 및 캐시 정책 적용 -->
+<!-- section-title: AWS S3와 CloudFront 연동 -->
 
-# AWS S3와 CloudFront 연동 및 캐시 정책 적용
+# AWS S3와 CloudFront 연동
+
+---
+
+## AWS CloudFront 는?
+
+- 콘텐츠(HTML, CSS, JS, etc.)를 사용자에게 더 빨리 배포하도록 AWS에서 제공하는 CDN(Content Delivery Network) 서비스
+- AWS CloudFront, 즉 CDN을 사용해서 웹 애플리케이션을 배포하면 로드 밸런싱, 속도 및 성능 향상, 보안 등 다양한 이점이 존재
+
+---
+
+## AWS CloudFront - How it works
+
+<figure>
+  <img src="/slides/images/cloudfront-how-it-works/s3-only.jpg" />
+  <figcaption>유럽 리전에 위치한 S3로 웹 서비스를 배포하는 경우</figcaption>
+</figure>
+
+---
+
+## AWS CloudFront - How it works
+
+<figure>
+  <img src="/slides/images/cloudfront-how-it-works/s3-with-cloudfront.jpg" />
+  <figcaption>
+    S3와 CloudFront(CDN)을 함께 사용하는 경우. 가까운 거리에서 요청한 사용자는
+    엣지 로케이션에서 캐싱된 콘텐츠를 빠르게 제공받는다
+  </figcaption>
+</figure>
+
+---
+
+### AWS CloudFront - Benchmark
+
+<figure>
+  <img src="/slides/images/cloudfront-how-it-works/benchmark.jpg" />
+  <figcaption>
+    버지니아 북부에 위치한 S3를 오리진으로 하는 CloudFront 여부에 따른 전송 결과
+    비교
+  </figcaption>
+</figure>
+
+---
+
+## AWS CloudFront Distribution 생성 - 실습
+
+이전에 생성한 S3를 Origin으로 하는 CloudFront Distribution 을 생성해 봅시다
+
+<!-- fragments-start -->
+
+<figure>
+  <img src="/slides/images/cloudfront-hands-on/1.png" />
+  <figcaption>Create Distribution 버튼 클릭</figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cloudfront-hands-on/2.png" />
+  <figcaption>Get Started 버튼 클릭</figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cloudfront-hands-on/3.png" />
+  <figcaption>
+    Origin Settings > Origin Domain Name 설정. S3 버킷 선택 후 다른 설정은 무시
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cloudfront-hands-on/4.png" />
+  <figcaption>
+    Default Cache Behavior Settings > View Protocol Policy 설정. HTTP를 HTTPS로
+    리다이렉트 시키도록 한다. 다른 설정은 무시
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cloudfront-hands-on/5.png" />
+  <figcaption>
+    Distribution Settings > Price Class, Default Root Object 설정. 위치하고자
+    하는 엣지 로케이션에 따라 가격이 다르기 때문에 적절한 price class를 선택하고
+    URL 접속시 보여줄 HTML 파일(index.html)을 설정한다
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cloudfront-hands-on/6.png" />
+  <figcaption>
+    Distribution을 생성하고 잠시 기다리면 해당 CloudFront URL로 접속할 수 있다
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="/slides/images/cloudfront-hands-on/7.png" />
+  <figcaption>CloudFront URL로 접속한 모습</figcaption>
+</figure>
+
+<!-- fragments-end -->
