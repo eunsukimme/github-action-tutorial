@@ -6,7 +6,11 @@
 
 ## Github Action Caching
 
-- `package-lock.json` 파일의 변경 사항이 없으면 node_modules 를 매번 설치하지 않고 캐싱
+- `package-lock.json` 파일의 변경 사항이 없으면 node_modules 를 매번 설치하지 않고 캐싱할 수 있다
+
+<br />
+
+참고: https://github.com/actions/cache
 
 ---
 
@@ -18,39 +22,45 @@
 
 <br />
 
-Reference: [Best practices for cache control settings for your website](https://medium.com/pixelpoint/best-practices-for-cache-control-settings-for-your-website-ff262b38c5a2)
+참고: https://medium.com/pixelpoint/best-practices-for-cache-control-settings-for-your-website-ff262b38c5a2
 
 ---
 
 ## AWS CloudFront OAI(Origin Access Identity)
 
-- CloudFront의 Origin(S3)으로 직접 접근하지 못 하도록 막는 대신 CloudFront를 통해서만 접근할 수 있도록 함
+<figure>
+  <img src="/slides/images/outro/OAI.png" />
+</figure>
+
+- CloudFront의 Origin(S3)으로 직접 접근하지 못 하도록 막는 대신 CloudFront를 통해서만 접근할 수 있도록 할 수 있다
+
+<br />
+
+참고: https://docs.aws.amazon.com/ko_kr/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
 
 ---
 
 ## AWS Route53
 
-- S3, CloudFront에 대한 ALIAS DNS 레코드 추가
+- Route53은 AWS에서 관리하는 DNS서비스로 이를 활용해서 S3, CloudFront에 대한 ALIAS DNS 레코드를 추가할 수 있다
+
+<br />
+
+참고: https://docs.aws.amazon.com/ko_kr/Route53/latest/DeveloperGuide/Welcome.html
 
 ---
 
 ## AWS ACM
 
-- CloudFront에 커스텀 도메인 설정할 때 TLS/SSL 인증서를 사용하도록 도와주는 서비스
+- CloudFront에 커스텀 도메인 설정할 때 TLS/SSL 인증서를 만들어주고 관리해주는 서비스
+
+<br />
+
+참고: https://docs.aws.amazon.com/ko_kr/acm/latest/userguide/acm-overview.html
 
 ---
 
-<!-- section-title: FAQ -->
-
-# FAQ
-
----
-
-## AWS S3를 사용하는 이유?
-
-- 버킷이 자동으로 확장 및 축소되기 때문에 스토리지 공간을 계획하여 특정 크기를 할당할 필요가 없습니다
-- 서버리스(Serverless) 서비스이기 때문에 파일이 저장되는 서버를 관리하거나 패치할 필요가 없습니다
-- 애플리케이션(동적 애플리케이션 등)에 서버가 필요하더라도 정적 콘텐츠에 대한 요청을 처리할 필요가 없기 때문에 서버 크기를 줄일 수 있습니다
+# Q & A
 
 ---
 

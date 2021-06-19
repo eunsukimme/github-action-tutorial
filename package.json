@@ -6,11 +6,10 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
+    "build:slide": "fusuma build",
     "start:slide": "fusuma start",
     "start:slide-prod": "fusuma start-prod",
-    "build:slide": "fusuma build",
-    "deploy:slide": "npm run build:slide && fusuma deploy",
-    "pdf": "npm run build && fusuma pdf"
+    "pdf": "npm run build:slide && fusuma pdf"
   },
   "dependencies": {
     "next": "^10.0.0",
