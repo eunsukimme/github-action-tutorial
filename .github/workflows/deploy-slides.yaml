@@ -33,7 +33,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy slide assets(CSS, JS, images, etc.) to S3
-        run: aws sync ./dist s3://github-action-aws-s3-cloudfront-seminar-slides.eunsukim.me --cache-control "public, max-age=31536000" --exclude "*.html"
+        run: aws s3 sync ./dist s3://github-action-aws-s3-cloudfront-seminar-slides.eunsukim.me --cache-control "public, max-age=31536000" --exclude "*.html"
 
       - name: Deploy slide HTML to S3
-        run: aws sync ./dist s3://github-action-aws-s3-cloudfront-seminar-slides.eunsukim.me --cache-control "no-cache"
+        run: aws s3 sync ./dist s3://github-action-aws-s3-cloudfront-seminar-slides.eunsukim.me --cache-control "no-cache"
