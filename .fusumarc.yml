@@ -1,7 +1,7 @@
 meta:
   url:
   title: CI/CD Tutorial with Github Action, AWS S3 ans CloudFront
-  description:
+  description: Github Action, AWS S3 and CloudFront를 활용한 React 애플리케이션 CI/CD 파이프라인을 구축해봅시다
   siteName:
 slide:
   loop: false
