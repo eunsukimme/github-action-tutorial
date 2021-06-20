@@ -17,9 +17,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
-      - name: Install dependencies
+      - name: Install Dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Build webpack
+      - name: Build Webpack
         run: npm run build
