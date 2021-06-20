@@ -6,28 +6,24 @@
 
 ---
 
-## AWS IAM 유저에 CloudFront 수정 정책 추가 - 실습
+## AWS IAM 유저에 CloudFront 접근 정책 추가 - 실습
 
-CD 워크플로우에서 S3에 접근하는 주체가 CloudFront에도 접근할 수 있도록 Policy를 추가합니다
-
-<!-- fragments-start -->
+이전에 생성한 User 페이지에서 Add Permissions 버튼 클릭
 
 <figure>
   <img src="/slides/images/cloudfront-iam-hands-on/1.png" />
-  <figcaption>
-    이전에 생성한 User 페이지에서 Add Permissions 버튼 클릭
-  </figcaption>
 </figure>
+
+---
+
+## AWS IAM 유저에 CloudFront 접근 정책 추가 - 실습
+
+Attach existing policies directly 클릭 후 cloudFront 를 검색하여
+CloudFrontFullAccess 롤을 선택한다
 
 <figure>
   <img src="/slides/images/cloudfront-iam-hands-on/2.png" />
-  <figcaption>
-    Attach existing policies directly 클릭 후 cloudFront 를 검색하여
-    CloudFrontFullAccess 롤을 선택한다
-  </figcaption>
 </figure>
-
-<!-- fragments-end -->
 
 ---
 
@@ -62,40 +58,50 @@ jobs:
 
 CloudFront 캐시 invalidation이 추가된 CD 워크플로우가 제대로 동작하는지 확인해봅시다
 
-<!-- fragments-start -->
-
 <figure>
   <img src="/slides/images/cd-hands-on-2/1.png" />
   <figcaption>pages/index.js 수정</figcaption>
 </figure>
 
+---
+
+## 수정된 CD 워크플로우 - 실습
+
+수정된 커밋을 main 브랜치에 푸시
+
 <figure>
   <img src="/slides/images/cd-hands-on-2/2.png" />
-  <figcaption>수정된 커밋을 main 브랜치에 푸시</figcaption>
 </figure>
+
+---
+
+## 수정된 CD 워크플로우 - 실습
+
+Actions > Continuous Deployment > deploy 에서 캐시 invalidation 스텝 확인
 
 <figure>
   <img src="/slides/images/cd-hands-on-2/3.png" />
-  <figcaption>
-    Actions > Continuous Deployment > deploy 에서 캐시 invalidation 스텝 확인
-  </figcaption>
 </figure>
+
+---
+
+## 수정된 CD 워크플로우 - 실습
+
+Cloudfront URL로 접속해서 변경 사항이 적용되었는지 확인
 
 <figure>
   <img src="/slides/images/cd-hands-on-2/4.png" />
-  <figcaption>
-    Cloudfront URL로 접속해서 변경 사항이 적용되었는지 확인
-  </figcaption>
 </figure>
+
+---
+
+## 수정된 CD 워크플로우 - 실습
+
+CloudFront 콘솔의 invalidation 탭에서 invalidation 이력 확인
 
 <figure>
   <img src="/slides/images/cd-hands-on-2/5.png" />
-  <figcaption>
-    CloudFront 콘솔의 invalidation 탭에서 invalidation 이력 확인
-  </figcaption>
 </figure>
-
-<!-- fragments-end -->
 
 ---
 
