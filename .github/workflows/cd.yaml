@@ -55,5 +55,5 @@ jobs:
       - name: Copy oHTML files t the S3 with the AWS CLI
         run: aws s3 sync . s3://${{ secrets.AWS_BUCKET_NAME }} --cache-control "no-cache"
 
-      - name: Invalidate CloudFront Cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+      # - name: Invalidate CloudFront Cache
+      #   run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
