@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: CI 워크플로우
 on: [pull_request]
 jobs:
   build:
@@ -6,20 +6,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Cache node modules
+      - name: Cache multiple paths
         id: node-cache
         uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
         with:
           path: node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install Dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      - name: Build Webpack
+      - name: Build application
         run: npm run build
